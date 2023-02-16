@@ -35,8 +35,10 @@ class PlayerHandler(threading.Thread):
                 if data:
                     self.handle_data(data)
             except Exception as e:
-                print(f"Error handling data from {self.addr}: {e}")
                 self.running = False
+                if not self.conn._closed:
+                    print(f"Error handling data from {self.addr}: {e}")
+                    return
                 self.game_server.disconnect_client(self)
 
 
