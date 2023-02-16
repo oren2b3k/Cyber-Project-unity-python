@@ -101,6 +101,7 @@ class GameServer(Server):
         self.units = {}
         self.players = []
         self.running = False
+        self.playing_game = False
         self.player_count = 0
         self.player_handlers = []
         self.players = []
